@@ -64,7 +64,9 @@ const Navbar: React.FC<NavbarProps> = ({ role }) => {
           </button>
 
           <Image src={"/globe.svg"} width={32} height={32} alt="Logo" />
-          <h1 className="ml-3 font-semibold text-lg">My App</h1>
+          <h1 className="ml-3 font-semibold text-lg uppercase  text-hex-orange">
+            Kainos
+          </h1>
         </div>
       </nav>
 
@@ -88,7 +90,9 @@ const Navbar: React.FC<NavbarProps> = ({ role }) => {
         {/* Sidebar header */}
         <div className="flex items-center p-4 border-b h-16">
           <Image src={"/globe.svg"} alt="Logo 2" width={32} height={32} />
-          <h1 className="ml-4 font-semibold">My App</h1>
+          <h1 className="ml-4 font-bold text-2xl uppercase  text-hex-orange">
+            Kainos
+          </h1>
         </div>
 
         {/* Sidebar links */}

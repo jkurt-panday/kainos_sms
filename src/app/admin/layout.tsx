@@ -1,5 +1,3 @@
-
-
 // src/app/dashboard/layout.tsx
 import Navbar from "@/components/layout/Navbar-Sidebar";
 
@@ -8,7 +6,7 @@ import Navbar from "@/components/layout/Navbar-Sidebar";
 export default function DashboardLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -16,8 +14,7 @@ export default function DashboardLayout({
         {/* Layout UI */}
         {/* Place children where you want to render a page or nested layout */}
         <main>
-          <Navbar role="admin">
-          </Navbar>
+          <Navbar role="admin"></Navbar>
 
           {/* <Sidebar></Sidebar> */}
 
@@ -25,5 +22,5 @@ export default function DashboardLayout({
         </main>
       </body>
     </html>
-  )
+  );
 }

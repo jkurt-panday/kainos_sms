@@ -27,43 +27,10 @@ export default function ParentCard() {
 
   return (
     <>
-      <div className="w-full max-w-6xl mx-auto bg-white rounded-xl shadow-md overflow-hidden"></div>
-      <div className="flex items-center justify-between px-6 py-4 border-b">
-        <div className="flex items-center space-x-3"></div>
-        <span className="text-sm text-gray-600">
-          Total:{" "}
-          <span className="font-medium text-gray-900">
-            {sampleParents.length}
-          </span>
-        </span>
-        <div className="relative"></div>
-        <input
-          type="search"
-          placeholder="Search name or email"
-          className="w-64 pl-10 pr-3 py-2 text-sm border rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-300"
-        />
-        <svg
-          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400  border"
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          aria-hidden
-        >
-          <path
-            d="M21 21l-4.35-4.35"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <circle cx="11" cy="11" r="6" stroke="currentColor" strokeWidth="2" />
-        </svg>
-      </div>
-
+      <div className="w-full max-w-6xl mx-auto bg-white rounded-xl shadow-md overflow-hidden mb-4"></div>
       <div className="overflow-x-auto">
-        <table className="min-w-full table-auto">
-          <thead className="bg-hex-orange text-white">
+        <table className="min-w-full table-auto bg-hex-bg-gray">
+          <thead className="bg-hex-orange text-white ">
             <tr>
               <th className="text-left px-6 py-3 text-xs font-bold text-white uppercase tracking-wider">
                 ID
@@ -88,7 +55,7 @@ export default function ParentCard() {
 
           <tbody className="bg-white divide-y divide-gray-100">
             {sampleParents.map((parent, index) => (
-              <tr key={index} className="hover:bg-amber-50 transition-colors">
+              <tr key={index} className="hover:bg-gray-300 transition-colors">
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700 font-medium">
                   {parent.parent_id}
                 </td>

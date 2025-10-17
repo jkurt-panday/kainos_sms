@@ -1,4 +1,4 @@
-import ParentCard from "@/components/parentcomp/ParentCard";
+import ParentCard from "@/components/ParentCard";
 
 export default function ParentsMenu() {
   return (
