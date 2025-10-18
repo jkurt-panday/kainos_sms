@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@supabase/supabase-js": "^2.75.1",
     "better-sqlite3": "^12.4.1",
     "clsx": "^2.1.1",
     "datatables.net": "^2.3.4",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/datatables.net": "^1.10.28",
     "@types/jquery": "^3.5.33",
     "@types/node": "^20",
     "@types/react": "^19",

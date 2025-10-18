@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" id="root-html">
       <body>
         {/* this is where the content goes */}
         {children}

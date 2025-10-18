@@ -1,10 +1,8 @@
-'use client';
+// "use client";
 
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
-import { useEffect } from "react";
-import $ from "jquery";
-import "datatables.net-dt/css/dataTables.dataTables.css"; // Default DataTables style
-import "datatables.net-dt"; // Initialize the DataTables plugin
+// import { useEffect } from "react";
+// import { $ } from "../lib/datatables"; // Import jQuery with DataTables attached
 
 export default function StudentTable() {
   const sampleStudents = [
@@ -13,35 +11,56 @@ export default function StudentTable() {
       name: "Ethan Miller",
       email: "ethan.miller@example.com",
       contact_number: "555-1234",
-      parent_name: "Alice Johnson",
+      grade_level: "Grade 5",
     },
     {
       student_id: 2,
       name: "Maya Thompson",
       email: "maya.thompson@example.com",
       contact_number: "555-5678",
-      parent_name: "Bob Smith",
+      grade_level: "Grade 6",
     },
     {
       student_id: 3,
       name: "Liam Nguyen",
       email: "liam.nguyen@example.com",
       contact_number: "555-9012",
-      parent_name: "Carol Lee",
+      grade_level: "Grade 5",
     },
   ];
 
-  useEffect(() => {
-    // Initialize DataTable after component mounts
-    $(document).ready(function () {
-      $('#studentsTable').DataTable();
-    });
-  }, []);
+  // TODO revert back using reflog
+
+  // useEffect(() => {
+  //   if (typeof window === "undefined") return;
+
+  //   // Initialize DataTable
+  //   const table = $("#studentsTable").DataTable({
+  //     paging: true,
+  //     searching: true,
+  //     info: true,
+  //     lengthChange: true,
+  //     pageLength: 5,
+  //     columnDefs: [
+  //       { targets: 0, searchable: false }, // ID column
+  //       { targets: 5, searchable: false }, // Actions column
+  //     ],
+      
+  //   });
+
+  //   // Cleanup when navigating away
+  //   return () => {
+  //     table.destroy();
+  //   };
+  // }, []);
 
   return (
     <>
       <div className="overflow-x-auto ">
-        <table className="min-w-full table-auto bg-hex-bg-gray" id="studentsTable" >
+        <table
+          className="min-w-full table-auto bg-hex-bg-gray"
+          id="studentsTable"
+        >
           <thead className="bg-hex-orange text-white ">
             <tr>
               <th className="text-left px-6 py-3 text-xs font-bold text-white uppercase tracking-wider">
@@ -57,7 +76,7 @@ export default function StudentTable() {
                 Contact
               </th>
               <th className="text-left px-6 py-3 text-xs font-bold text-white uppercase tracking-wider">
-                Parent
+                Grade Level
               </th>
               <th className="text-center px-6 py-3 text-xs font-bold text-white uppercase tracking-wider">
                 Actions
@@ -102,7 +121,7 @@ export default function StudentTable() {
                 </td>
 
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                  {student.parent_name}
+                  {student.grade_level}
                 </td>
 
                 <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">

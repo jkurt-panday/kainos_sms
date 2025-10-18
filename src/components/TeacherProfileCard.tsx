@@ -1,20 +1,26 @@
 import Image from "next/image";
+import { supabase } from "@/lib/supabaseClient";
 
-const profile = [
-  { name: "Jane Doe", subject: "Mathematics", email: "janedoe@mail.com" },
-  { name: "John Smith", subject: "Science", email: "jonsmith@mail.com" },
-  { name: "Emily Johnson", subject: "History", email: "emilyjohnson@mail.com" },
-  { name: "Michael Brown", subject: "English", email: "michaelbrown@mail.com" },
-  { name: "Sarah Davis", subject: "Art", email: "sarahdavis@mail.com" },
-];
+export default async function TeacherProfileCard() {
+  // fetching data
+  const { data, error } = await supabase.from("Teachers").select("*");
 
-export default function TeacherProfileCard() {
+  // checks if there is no data
+  if (!data || data.length === 0) {
+    return <div>No teachers found.</div>;
+  }
+
+  // checks if connection is established
+  if (error) {
+    console.error(error);
+    return <div>Error loading teachers.</div>;
+  }
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-items-center mb-10  p-5 rounded-2xl ">
-        {profile.map((profile, index) => (
+        {data.map((teacher) => (
           <div
-            key={index}
+            key={teacher.id}
             className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 p-10 transition-transform duration-300 ease-in-out
             hover:scale-110 cursor-pointer"
           >
@@ -28,21 +34,15 @@ export default function TeacherProfileCard() {
               />
               {/* Teacher name */}
               <h5 className="mb-1 text-xl font-bold text-hex-orange dark:text-white">
-                {profile.name}
+                {teacher.name}
               </h5>
               <div className="flex flex-col items-center gap-1 mt-4 md:mt-6">
-                <a
-                  href="#"
-                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-hex-blue rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  {profile.subject}
-                </a>
-                <a
-                  href="#"
-                  className="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                >
-                  {profile.email}
-                </a>
+                <span className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-hex-blue rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  {teacher.email}
+                </span>
+                <span className="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                  {teacher.email} change into subject
+                </span>
               </div>
             </div>
           </div>

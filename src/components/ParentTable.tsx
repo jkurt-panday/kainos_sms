@@ -1,6 +1,12 @@
-import { FiEdit2, FiTrash2 } from "react-icons/fi";
+// "use client";
 
-export default function ParentCard() {
+import { FiEdit2, FiTrash2 } from "react-icons/fi";
+// import { useEffect } from "react";
+// import $ from "jquery";
+// import "datatables.net-dt/css/dataTables.dataTables.css"; // Default DataTables style
+// import "datatables.net-dt"; // Initialize the DataTables plugin
+
+export default function ParentTable() {
   const sampleParents = [
     {
       parent_id: 1,
@@ -25,11 +31,20 @@ export default function ParentCard() {
     },
   ];
 
+  // useEffect(() => {
+  //   // Initialize DataTable after component mounts
+  //   $(document).ready(function () {
+  //     $("#parentTable").DataTable();
+  //   });
+  // }, []);
+
   return (
     <>
-      <div className="w-full max-w-6xl mx-auto bg-white rounded-xl shadow-md overflow-hidden mb-4"></div>
       <div className="overflow-x-auto">
-        <table className="min-w-full table-auto bg-hex-bg-gray">
+        <table
+          className="min-w-full table-auto bg-hex-bg-gray"
+          id="parentTable"
+        >
           <thead className="bg-hex-orange text-white ">
             <tr>
               <th className="text-left px-6 py-3 text-xs font-bold text-white uppercase tracking-wider">

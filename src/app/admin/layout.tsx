@@ -9,18 +9,22 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        {/* Layout UI */}
-        {/* Place children where you want to render a page or nested layout */}
-        <main>
-          <Navbar role="admin"></Navbar>
+    <main>
+      <Navbar role="admin"></Navbar>
 
-          {/* <Sidebar></Sidebar> */}
-
-          {children}
-        </main>
-      </body>
-    </html>
+      {children}
+    </main>
   );
 }
+
+{
+  /* <html lang="en" id="admin-html">
+      <body>
+        {/* Layout UI */
+}
+{
+  /* Place children where you want to render a page or nested layout */
+}
+<main></main>;
+//   </body>
+// </html>

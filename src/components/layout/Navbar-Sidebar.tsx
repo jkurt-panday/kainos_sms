@@ -102,7 +102,7 @@ const Navbar: React.FC<NavbarProps> = ({ role }) => {
               key={i}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="px-6 py-3 text-gray-700 hover:bg-[#f47c2b] hover:text-white transition-colors"
+              className="px-6 py-3 text-gray-700 hover:bg-[#f47c2b] hover:text-white hover:font-bold transition-colors"
             >
               {link.name}
             </Link>
