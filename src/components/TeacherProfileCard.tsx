@@ -2,55 +2,65 @@ import Image from "next/image";
 import { supabase } from "@/lib/supabaseClient";
 
 export default async function TeacherProfileCard() {
-  // fetching data
-  const { data, error } = await supabase.from("Teachers").select("*");
+  // Fetch teachers directly on the server
+  const { data: teachers, error } = await supabase.from("Teachers").select("*");
 
-  // checks if there is no data
-  if (!data || data.length === 0) {
-    return <div>No teachers found.</div>;
-  }
-
-  // checks if connection is established
   if (error) {
     console.error(error);
-    return <div>Error loading teachers.</div>;
+    return <div className="text-red-500 p-4">Error loading teachers.</div>;
   }
+
+  if (!teachers || teachers.length === 0) {
+    return <div className="p-4 text-gray-500">No teachers found.</div>;
+  }
+
   return (
-    <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-items-center mb-10  p-5 rounded-2xl ">
-        {data.map((teacher) => (
-          <div
-            key={teacher.id}
-            className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 p-10 transition-transform duration-300 ease-in-out
-            hover:scale-110 cursor-pointer"
-          >
-            <div className="flex flex-col items-center pb-3 ">
-              <Image
-                className="w-24 h-24 mb-3 rounded-full shadow-lg"
-                src={"/globe.svg"}
-                width={96}
-                height={96}
-                alt="Teacher Image"
-              />
-              {/* Teacher name */}
-              <h5 className="mb-1 text-xl font-bold text-hex-orange dark:text-white">
-                {teacher.name}
-              </h5>
-              <div className="flex flex-col items-center gap-1 mt-4 md:mt-6">
-                <span className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-hex-blue rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                  {teacher.email}
-                </span>
-                <span className="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
-                  {teacher.email} change into subject
-                </span>
-              </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 justify-items-center mb-10 p-5 rounded-2xl">
+      {teachers.map((teacher) => (
+        <div
+          key={teacher.id}
+          className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 p-10 transition-transform duration-300 ease-in-out hover:scale-110 cursor-pointer"
+        >
+          <div className="flex flex-col items-center pb-3">
+            <Image
+              className="w-24 h-24 mb-3 rounded-full shadow-lg"
+              src={"/globe.svg"}
+              width={96}
+              height={96}
+              alt="Teacher Image"
+            />
+            <h5 className="mb-1 text-xl font-bold text-hex-orange dark:text-white">
+              {teacher.name}
+            </h5>
+            <div className="flex flex-col items-center gap-1 mt-4 md:mt-6">
+              <span className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-hex-blue rounded-lg">
+                {teacher.email}
+              </span>
+              <span className="py-2 px-4 ms-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200">
+                {teacher.subject || "No subject assigned"}
+              </span>
             </div>
           </div>
-        ))}
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
   );
 }
+
+
+// fetching data
+  // const { data, error } = await supabase.from("Teachers").select("*");
+
+  // checks if there is no data
+  // if (!data || data.length === 0) {
+  //   return <div>No teachers found.</div>;
+  // }
+
+  // checks if connection is established
+  // if (error) {
+  //   console.error(error);
+  //   return <div>Error loading teachers.</div>;
+  // }
 
 // {/* <div className="flex justify-end px-4 pt-4">
 //                     <button id="dropdownButton" data-dropdown-toggle="dropdown" className="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">

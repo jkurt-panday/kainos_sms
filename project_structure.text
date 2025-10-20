@@ -1,0 +1,68 @@
+- .env
+- .env.local
+- .gitignore
+- README.md
+- eslint.config.mjs
+- next-env.d.ts
+- next.config.ts
+- package-lock.json
+- package.json
+- postcss.config.mjs
+- prisma
+  - schema.prisma
+- public
+  - file.svg
+  - globe.svg
+  - next.svg
+  - vercel.svg
+  - window.svg
+- src
+  - app
+    - admin
+      - announcementsmenu
+        - page.tsx
+      - layout.tsx
+      - page.tsx
+      - parentsmenu
+        - page.tsx
+      - studentsmenu
+        - page.tsx
+      - subjectsmenu
+        - page.tsx
+      - teachersmenu
+        - page.tsx
+    - favicon.ico
+    - globals.css
+    - layout.tsx
+    - page.tsx
+    - parents
+      - layout.tsx
+      - page.tsx
+    - teachers
+      - attendancesmenu
+        - page.tsx
+      - classesmenu
+        - page.tsx
+      - layout.tsx
+      - page.tsx
+      - teacherannouncementsmenu
+        - page.tsx
+  - components
+    - AdminCard.tsx
+    - ParentTable.tsx
+    - StudentTables.tsx
+    - TeacherForm.tsx
+    - TeacherProfileCard.tsx
+    - config
+      - links-admin.tsx
+      - links-parent.tsx
+      - links-teacher.tsx
+    - layout
+      - Navbar-Sidebar.tsx
+      - Sidebar.tsx
+      - nav-links.tsx
+      - sidenav.tsx
+  - lib
+    - datatables.ts
+    - supabaseClient.ts
+- tsconfig.json
