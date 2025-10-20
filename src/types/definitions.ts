@@ -1,14 +1,14 @@
 // src/types/Teacher.ts
-export interface Teachers {
+export interface Teacher {
   id: number;
   name: string;
   email: string;
   password: string;
-  classes?: Classes[]; // optional relation
+  classes?: Class[]; // optional relation
 }
 
 // src/types/Class.ts
-export interface Classes {
+export interface Class {
   id: number;
   class_name: string;
   grade_level: number;
