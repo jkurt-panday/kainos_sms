@@ -1,8 +1,8 @@
-// "use client";
+"use client";
 
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
-// import { useEffect } from "react";
-// import { $ } from "../lib/datatables"; // Import jQuery with DataTables attached
+import { useEffect } from "react";
+import { $ } from "../lib/datatables"; // Import jQuery with DataTables attached
 
 export default function StudentTable() {
   const sampleStudents = [
@@ -29,7 +29,12 @@ export default function StudentTable() {
     },
   ];
 
-  // TODO revert back using reflog
+  useEffect(() => {
+    // Initialize DataTable after component mounts
+    $(document).ready(function () {
+      $("#studentsTable").DataTable();
+    });
+  }, []);
 
   // useEffect(() => {
   //   if (typeof window === "undefined") return;
@@ -45,7 +50,6 @@ export default function StudentTable() {
   //       { targets: 0, searchable: false }, // ID column
   //       { targets: 5, searchable: false }, // Actions column
   //     ],
-      
   //   });
 
   //   // Cleanup when navigating away

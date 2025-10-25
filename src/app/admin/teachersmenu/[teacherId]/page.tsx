@@ -6,10 +6,12 @@ import { supabase } from "@/lib/supabaseClient";
 import TeacherForm from "@/components/forms/TeacherForm";
 import { Teacher, Class } from "@/types/definitions";
 import { JSX } from "react";
+import { useRouter } from "next/navigation";
 
 export default function EditTeacherPage(): JSX.Element {
   const { teacherId } = useParams<{ teacherId: string }>();
   const [teacher, setTeacher] = useState<Teacher | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchTeacher = async (): Promise<void> => {
@@ -40,6 +42,8 @@ export default function EditTeacherPage(): JSX.Element {
     void fetchTeacher();
   }, [teacherId]);
 
+  // TODO how to get the classes of a teacher from Teacher_classes
+
   const handleUpdate = async (data: Teacher): Promise<void> => {
     await supabase
       .from("Teachers")
@@ -62,13 +66,15 @@ export default function EditTeacherPage(): JSX.Element {
     }
 
     alert("Teacher updated successfully!");
+    // after successful create or update
+    router.push("/admin/teachersmenu");
   };
 
   if (!teacher) return <p>Loading...</p>;
 
   return (
-    <div className="max-w-lg mx-auto mt-6">
-      <h1 className="text-2xl font-semibold mb-4">Edit Teacher</h1>
+    <div className="min-h-lvh p-3 bg-hex-bg-gray md:ml-64 rounded-2xl">
+      <h1 className="text-3xl font-bold text-hex-blue mb-4">Edit Teacher</h1>
       <TeacherForm initialData={teacher} onSubmit={handleUpdate} />
     </div>
   );

@@ -10,7 +10,7 @@ export default function DashboardLayout({
     <>
       {/* Layout UI */}
       {/* Place children where you want to render a page or nested layout */}
-      <main className="ml-64">
+      <main className="md:ml-64">
         <Navbar role="teacher"></Navbar>
         {children}
       </main>

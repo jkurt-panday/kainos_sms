@@ -38,8 +38,8 @@ export default function NewTeacherPage(): JSX.Element {
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-6">
-      <h1 className="text-2xl font-semibold mb-4">Add New Teacher</h1>
+    <div className="min-h-lvh p-3 bg-hex-bg-gray md:ml-64 rounded-2xl">
+      <h1 className="text-4xl font-bold text-hex-blue mb-4">Add New Teacher</h1>
       <TeacherForm onSubmit={handleCreate} />
     </div>
   );

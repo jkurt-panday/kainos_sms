@@ -25,6 +25,6 @@ export default function DashboardLayout({
 {
   /* Place children where you want to render a page or nested layout */
 }
-<main></main>;
+{/* <main></main>; */}
 //   </body>
 // </html>

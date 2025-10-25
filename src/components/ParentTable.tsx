@@ -1,8 +1,8 @@
-// "use client";
+"use client";
 
 import { FiEdit2, FiTrash2 } from "react-icons/fi";
-// import { useEffect } from "react";
-// import $ from "jquery";
+import { useEffect } from "react";
+import { $ } from "../lib/datatables"; ;
 // import "datatables.net-dt/css/dataTables.dataTables.css"; // Default DataTables style
 // import "datatables.net-dt"; // Initialize the DataTables plugin
 
@@ -31,12 +31,12 @@ export default function ParentTable() {
     },
   ];
 
-  // useEffect(() => {
-  //   // Initialize DataTable after component mounts
-  //   $(document).ready(function () {
-  //     $("#parentTable").DataTable();
-  //   });
-  // }, []);
+  useEffect(() => {
+    // Initialize DataTable after component mounts
+    $(document).ready(function () {
+      $("#parentTable").DataTable();
+    });
+  }, []);
 
   return (
     <>

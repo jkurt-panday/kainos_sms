@@ -1,12 +1,24 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model Teacher {
+  id       Int      @id @default(autoincrement())
+  name     String
+  email    String   @unique
+  password String
+  classes  Class[]  // one-to-many relationship
+}
+
+model Class {
+  id          Int      @id @default(autoincrement())
+  class_name  String
+  grade_level Int
+  teacherId   Int
+  teacher     Teacher  @relation(fields: [teacherId], references: [id])
 }
